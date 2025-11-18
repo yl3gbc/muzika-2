@@ -5,7 +5,7 @@ app = FastAPI()
 
 @app.get("/home/")
 def home():
-    return "PR.Andra Solima mŪzikas lapa"
+    return "PR.Andra Solima mūzikas lapa"
 
 @app.get("/notis/")
 def notis():
