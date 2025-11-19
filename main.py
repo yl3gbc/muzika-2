@@ -1,28 +1,13 @@
-import uvicorn
-from fastapi import FastAPI
-
-app = FastAPI()
-
-db_immitation =[
-    {"id":1, "text":"autori"},
-    {"id":2, "text":"autoer1234"},
+from flask import Flask, render_template
 
 
-]
-
-@app.get("/home/")
+app = Flask(__name__)
+name='Pr.Andris Solims mūzikas lapa'
+@app.route('/')
 def home():
-    return "PR.Andra Solima mūzikas lapa"
-
-@app.get("/notis/")
-def notis():
-    return ("Notis")
-
-@app.get("/autori/{autori_id}")
-def autori(autori_id):
-    if 0 < int(autori_id) <= len(db_immitation):
-        return db_immitation[int(autori_id)-1]["text"]
-    else:
-    return "Ieraksti  nav atyrasti"
-if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    return  render_template('index.html')
+@app.route('/all.index')
+def all():
+    return render_template('all.html')
+if __name__ == '__main__':
+    app.run(debug=True)
